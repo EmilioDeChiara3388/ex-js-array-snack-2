@@ -58,3 +58,26 @@ console.log(longBooksTitles);
 
 longBooks.forEach(book => console.log(book.title))
 
+/* Snack 2
+Creare un array (availableBooks) che contiene tutti i libri disponibili.
+Crea un array (discountedBooks) con gli availableBooks, ciascuno con il prezzo scontato del 20% (mantieni lo stesso formato e arrotonda al centesimo)
+Salva in una variabile (fullPricedBook) il primo elemento di discountedBooks che ha un prezzo intero (senza centesimi). */
+
+const availableBooks = books.filter(book => book.available === true)
+console.log(availableBooks);
+
+const discountedBooks = availableBooks.map(book => {
+    return {
+        ...book,
+        price: (parseInt(book.price) / 100 * 80).toFixed(2) + "€"
+    }
+})
+
+console.log(discountedBooks);
+
+const fullPricedBook = discountedBooks.find(book => Number.isInteger(parseInt(book.price)))
+console.log(fullPricedBook);
+
+
+
+
