@@ -121,7 +121,7 @@ console.log(etàMedia);
 Usando la l'API https://boolean-spec-frontend.vercel.app/freetestapi/books/{id} usa la combinazione di .map() e Promise.all(), per creare una funzione (getBooks) che a partire da un array di id (ids), ritorna una promise che risolve un array di libri (books).
 Testala con l’array [2, 13, 7, 21, 19] . */
 
-async function fetchJson(url) {
+/* async function fetchJson(url) {
     const response = await fetch(url)
     const obj = await response.json()
     return obj
@@ -135,7 +135,25 @@ async function getBooks(ids) {
 }
 
 getBooks([2, 13, 7, 21, 19])
-    .then(console.log)
+    .then(console.log) */
+
+/* Snack 6
+Crea una variabile booleana (areThereAvailableBooks) per verificare se c’è almeno un libro disponibile.
+Crea un array (booksByPrice) con gli elementi di books ordinati in base al prezzo (crescente).
+Ordina l’array booksByPricein base alla disponibilità (prima quelli disponibili), senza creare un nuovo array. */
+
+const areThereAvailableBooks = books.some(book => book.available == true)
+console.log(areThereAvailableBooks);
+
+const booksByPrice = books.sort((a, b) => {
+    return parseInt(a.price) - parseInt(b.price)
+})
+console.log(booksByPrice);
+
+booksByPrice.sort((a, b) => {
+    return b.available - a.available
+})
+
 
 
 
