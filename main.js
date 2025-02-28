@@ -63,7 +63,7 @@ Creare un array (availableBooks) che contiene tutti i libri disponibili.
 Crea un array (discountedBooks) con gli availableBooks, ciascuno con il prezzo scontato del 20% (mantieni lo stesso formato e arrotonda al centesimo)
 Salva in una variabile (fullPricedBook) il primo elemento di discountedBooks che ha un prezzo intero (senza centesimi). */
 
-const availableBooks = books.filter(book => book.available === true)
+const availableBooks = books.filter(book => book.available)
 console.log(availableBooks);
 
 const discountedBooks = availableBooks.map(book => {
@@ -87,11 +87,11 @@ Ordina l’array authors in base all’età, senza creare un nuovo array.
 const authors = books.map(book => book.author)
 console.log(authors);
 
-const areAuthorsAdults = books.every(book => book.author > 18)
+const areAuthorsAdults = books.every(book => book.author >= 18)
 console.log(areAuthorsAdults);
 
 authors.sort((a, b) => {
-    if (areAuthorsAdults == true) {
+    if (areAuthorsAdults) {
         return a.age - b.age
     } else {
         return b.age - a.age
@@ -142,20 +142,16 @@ Crea una variabile booleana (areThereAvailableBooks) per verificare se c’è al
 Crea un array (booksByPrice) con gli elementi di books ordinati in base al prezzo (crescente).
 Ordina l’array booksByPricein base alla disponibilità (prima quelli disponibili), senza creare un nuovo array. */
 
-const areThereAvailableBooks = books.some(book => book.available == true)
+const areThereAvailableBooks = books.some(book => book.available)
 console.log(areThereAvailableBooks);
 
-const booksByPrice = books.sort((a, b) => {
+const booksByPrice = [...books].sort((a, b) => {
     return parseInt(a.price) - parseInt(b.price)
 })
 console.log(booksByPrice);
 
-booksByPrice.sort((a, b) => {
-    return b.available - a.available
-})
-
-
-
+booksByPrice.sort((a, b) => a.available === b.available ? 0 : a.available ? -1 : 1)
+console.log(booksByPrice);
 
 
 
